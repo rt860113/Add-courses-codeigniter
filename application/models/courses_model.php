@@ -10,9 +10,19 @@ class Courses_model extends CI_Model
 	}
 	public function add_course($array)
 	{
-		$query="INSERT INTO courses (name,decription,created_at) VALUES (?,?,?)";
+		$query="INSERT INTO courses (name,description,created_at) VALUES (?,?,?)";
 		$values=array($array['name'],$array['description'],date("Y-m-d, H:i:s"));
 		return $this->db->query($query,$values);
+	}
+	public function get_course_id()
+	{
+		return $this->db->query("SELECT id FROM courses")->row_array();
+	}
+	public function delete_course()
+	{
+		$row=$this->get_course_id();
+		$query="DELETE FROM courses WHERE id=?";
+		$this->db->query($query,$row);
 	}
 
 }
