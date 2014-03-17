@@ -1,6 +1,6 @@
 <?php
 /**
-*  model
+*  model class
 */
 class Courses_model extends CI_Model
 {
